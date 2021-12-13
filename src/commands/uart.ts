@@ -100,4 +100,12 @@ export const handler = async (argv: Arguments<Options>) => {
       }
     }
   });
+
+  process.on("SIGINT", async () => {
+    console.log('SIGINT caught, disconnecting...');
+    if (foundPeripheral) {
+      await foundPeripheral.disconnectAsync();
+    }
+    process.exit();
+  });
 };
