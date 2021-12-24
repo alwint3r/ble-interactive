@@ -1,11 +1,18 @@
 {
-  "name": "interactive-terminal",
+  "name": "bleterm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon src/cli.ts",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "package": "pkg . --targets node16-linux-x64,node16-macos-x64,node16-win --out-path ./executables/"
+  },
+  "pkg": {
+    "scripts": "./build/**/*.js"
+  },
+  "bin": {
+    "bleterm": "./build/cli.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +21,7 @@
     "@types/node": "^16.11.12",
     "@types/yargs": "^17.0.7",
     "nodemon": "^2.0.15",
+    "pkg": "^5.5.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.3"
   },
